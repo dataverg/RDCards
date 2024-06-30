@@ -19,7 +19,7 @@ html {
 .inpt {
   background: linear-gradient(100deg, #402, #006);
   padding: 2em;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   justify-content: left;
   align-items: top;
@@ -87,5 +87,26 @@ html {
   transition: background-position 0.8s ease-out;
 }
 .input-group__input:hover {
+  background-position: 100% 0;
+}
+
+.input-group__input_btn {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  border-style: none;
+  outline: none;
+  height: calc(1em + 1.6em + 0.5em);
+  width: 100%;
+  padding: 0.8em 1em;
+  border: 0.25em solid transparent;
+  background-image: linear-gradient(#000, #000), linear-gradient(120deg, #f09 0%, #0ff 50%, #9f0 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border-radius: 1.8em;
+  background-size: 200% 100%;
+  transition: background-position 0.8s ease-out;
+}
+.input-group__input_btn:hover {
   background-position: 100% 0;
 }

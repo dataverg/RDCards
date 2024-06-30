@@ -4,10 +4,17 @@
 <head>
   <link rel="stylesheet" href="input_style.css">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 
 <style>
+    * {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+  }
+
   p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
@@ -15,7 +22,7 @@
 
   .header {
     width: auto;
-    height: 150px;
+    height: max-content;
     background-color: #2196F3;
   }
 
@@ -28,23 +35,19 @@
 
   .grid-container {
     display: grid;
+    width: auto;
     grid-template-columns: auto auto auto auto auto auto;
     gap: 10px;
-    background-color: #2196F3;
+    background: linear-gradient(100deg, #402, #006);  
     padding: 10px;
   }
 
   .grid-container>div {
     background-color: rgba(255, 255, 255, 0.8);
+    background-size: cover;
     border: 1px solid black;
     text-align: center;
     font-size: 30px;
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
   }
 
   .container {
@@ -104,12 +107,10 @@
       <div class="input-group">
         <label class="input-group__label" for="myInput">Cards Opened</label>
         <input type="text" id="myInput" class="input-group__input" placeholder="Input the amount of starting cards" />
-        <button onclick="returnText()">Submit</button>
+        <br>
+        <button class="input-group__input_btn" onclick="returnText()">Submit</button>
       </div>
     </div>
-
-    <p id="cards-display" style="font-size: 50px;">0</p>
-
   </div>
 
 
