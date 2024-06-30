@@ -2,154 +2,808 @@
 <html lang="en">
 
 <head>
-
+  <link rel="stylesheet" href="input_style.css">
+  <meta charset="UTF-8">
 </head>
 
 
 <style>
+  p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+  }
 
-p {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 25px;
-}
+  .header {
+    width: auto;
+    height: 150px;
+    background-color: #2196F3;
+  }
 
-.dicepng {
-  width: 128px;
-  height: 128px;
-  align-self: center;
-}
+  .dicepng {
+    width: 96px;
+    height: 96px;
+    align-self: center;
+  }
 
 
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  gap: 10px;
-  background-color: #2196F3;
-  padding: 10px;
-}
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+  }
 
-.grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid black;
-  text-align: center;
-  font-size: 30px;
-}
+  .grid-container>div {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    text-align: center;
+    font-size: 30px;
+  }
 
-* {
+  * {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-}
+  }
 
-.container {
+  .container {
     height: 60px;
     width: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+  }
 
-.counter {
+  .counter {
     width: 30%;
     display: flex;
     justify-content: center;
-}
+  }
 
-.counter-btn{
-    height: 25px;
+  .counter-btn {
+    height: 30px;
     width: 60px;
-    padding: 0 20px;
+    padding: 0 15px;
     border-radius: 5px;
-    font-size: 20px;
-    background-color: #2e8d46;
-    border: 2px solid #2e8d46;
+    font-size: 25px;
+    background-image: url(Assets/Button-bg.png);
+    background-size: cover;
+    background-position: center;
+    border-color: #D78813;
     color: white;
-    margin: 10px;
-}
+    margin: 5px;
+    vertical-align: text-top;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #9C723F;
+  }
 
-.counter-value {
-    height: 25px;
+  .counter-value {
+    height: 30px;
     min-width: 60px;
     border-radius: 10px;
-    background-color: rgba(255, 0, 0, 0.187);
-    margin-top: 10px;
-    font-size: 15px;
+    background-color: rgb(174, 174, 174);
+    margin-top: 5px;
+    font-size: 20px;
+    font-family: Verdana, Tahoma, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    color: white;
+    font-weight: bolder;
+    -webkit-text-stroke-width: 1.2px;
+    -webkit-text-stroke-color: #000000;
+  }
 </style>
 
 
 <body>
-    <div class="grid-container">
-        <div>
-          <p>Dice1</p>
-          <img src="Assets/Testimg.png" class="dicepng">
-          <br>
-          <div class="container">
-            <div class="counter">
-                <button class="counter-btn" id="increment-btn">+</button>
-                <div class="counter-value" id="counter-value">0</div>
-                <button class="counter-btn" id="decrement-btn">-</button>
-            </div>
-        </div>
-        </div>
-
-        <div>
-          <p>Dice2</p>
-          <img src="Assets/Testimg.png" class="dicepng">
-          <br>
-          <div class="container">
-            <div class="counter">
-                <button class="counter-btn" id="increment-btn2">+</button>
-                <div class="counter-value" id="counter-value2">0</div>
-                <button class="counter-btn" id="decrement-btn2">-</button>
-            </div>
-        </div>
-        </div>
-
-        <div>
-          <p>Dice3</p>
-          <img src="Assets/Testimg.png" class="dicepng">
-          <br>
-          <div class="container">
-            <div class="counter">
-                <button class="counter-btn" id="increment-btn3">+</button>
-                <div class="counter-value" id="counter-value3">0</div>
-                <button class="counter-btn" id="decrement-btn3">-</button>
-            </div>
-          </div>
-          </div>
-          
-          <div>
-            <p>Dice4</p>
-            <img src="Assets/Testimg.png" class="dicepng">
-            <br>
-            <div class="container">
-              <div class="counter">
-                  <button class="counter-btn" id="increment-btn4">+</button>
-                  <div class="counter-value" id="counter-value4">0</div>
-                  <button class="counter-btn" id="decrement-btn4">-</button>
-              </div>
-            </div>
-            </div>
-
-            <div>
-              <p>Dice5</p>
-              <img src="Assets/Testimg.png" class="dicepng">
-              <br>
-              <div class="container">
-                <div class="counter">
-                    <button class="counter-btn" id="increment-btn5">+</button>
-                    <div class="counter-value" id="counter-value5">0</div>
-                    <button class="counter-btn" id="decrement-btn5">-</button>
-                </div>
-              </div>
-              </div>
-          
+  <div class="header">
+    <div class="inpt">
+      <div class="input-group">
+        <label class="input-group__label" for="myInput">Cards Opened</label>
+        <input type="text" id="myInput" class="input-group__input" value="Input the amount of starting cards" />
+        <button onclick="returnText()">Submit</button>
+      </div>
     </div>
+
+    <p id="cards-display" style="font-size: 50px;">0</p>
+
+  </div>
+
+
+  <div class="grid-container">
+    <div>
+      <p>Dice1</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn">-</button>
+          <div class="counter-value" id="counter-value">0</div>
+          <button class="counter-btn" id="increment-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice2</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn2">-</button>
+          <div class="counter-value" id="counter-value2">0</div>
+          <button class="counter-btn" id="increment-btn2">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice3</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn3">-</button>
+          <div class="counter-value" id="counter-value3">0</div>
+          <button class="counter-btn" id="increment-btn3">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice4</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn4">-</button>
+          <div class="counter-value" id="counter-value4">0</div>
+          <button class="counter-btn" id="increment-btn4">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice5</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn5">-</button>
+          <div class="counter-value" id="counter-value5">0</div>
+          <button class="counter-btn" id="increment-btn5">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice6</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn6">-</button>
+          <div class="counter-value" id="counter-value6">0</div>
+          <button class="counter-btn" id="increment-btn6">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice7</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn7">-</button>
+          <div class="counter-value" id="counter-value7">0</div>
+          <button class="counter-btn" id="increment-btn7">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice8</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn8">-</button>
+          <div class="counter-value" id="counter-value8">0</div>
+          <button class="counter-btn" id="increment-btn8">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice9</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn9">-</button>
+          <div class="counter-value" id="counter-value9">0</div>
+          <button class="counter-btn" id="increment-btn9">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice10</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn10">-</button>
+          <div class="counter-value" id="counter-value10">0</div>
+          <button class="counter-btn" id="increment-btn10">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice11</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn11">-</button>
+          <div class="counter-value" id="counter-value11">0</div>
+          <button class="counter-btn" id="increment-btn11">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice12</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn12">-</button>
+          <div class="counter-value" id="counter-value12">0</div>
+          <button class="counter-btn" id="increment-btn12">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice13</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn13">-</button>
+          <div class="counter-value" id="counter-value13">0</div>
+          <button class="counter-btn" id="increment-btn13">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice14</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn14">-</button>
+          <div class="counter-value" id="counter-value14">0</div>
+          <button class="counter-btn" id="increment-btn14">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice15</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn15">-</button>
+          <div class="counter-value" id="counter-value15">0</div>
+          <button class="counter-btn" id="increment-btn15">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice16</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn16">-</button>
+          <div class="counter-value" id="counter-value16">0</div>
+          <button class="counter-btn" id="increment-btn16">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice17</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn17">-</button>
+          <div class="counter-value" id="counter-value17">0</div>
+          <button class="counter-btn" id="increment-btn17">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice18</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn18">-</button>
+          <div class="counter-value" id="counter-value18">0</div>
+          <button class="counter-btn" id="increment-btn18">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice19</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn19">-</button>
+          <div class="counter-value" id="counter-value19">0</div>
+          <button class="counter-btn" id="increment-btn19">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice20</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn20">-</button>
+          <div class="counter-value" id="counter-value20">0</div>
+          <button class="counter-btn" id="increment-btn20">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice21</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn21">-</button>
+          <div class="counter-value" id="counter-value21">0</div>
+          <button class="counter-btn" id="increment-btn21">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice22</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn22">-</button>
+          <div class="counter-value" id="counter-value22">0</div>
+          <button class="counter-btn" id="increment-btn22">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice23</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn23">-</button>
+          <div class="counter-value" id="counter-value23">0</div>
+          <button class="counter-btn" id="increment-btn23">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice24</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn24">-</button>
+          <div class="counter-value" id="counter-value24">0</div>
+          <button class="counter-btn" id="increment-btn24">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice25</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn25">-</button>
+          <div class="counter-value" id="counter-value25">0</div>
+          <button class="counter-btn" id="increment-btn25">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice26</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn26">-</button>
+          <div class="counter-value" id="counter-value26">0</div>
+          <button class="counter-btn" id="increment-btn26">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice27</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn27">-</button>
+          <div class="counter-value" id="counter-value27">0</div>
+          <button class="counter-btn" id="increment-btn27">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice28</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn28">-</button>
+          <div class="counter-value" id="counter-value28">0</div>
+          <button class="counter-btn" id="increment-btn28">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice29</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn29">-</button>
+          <div class="counter-value" id="counter-value29">0</div>
+          <button class="counter-btn" id="increment-btn29">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice30</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn30">-</button>
+          <div class="counter-value" id="counter-value30">0</div>
+          <button class="counter-btn" id="increment-btn30">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice31</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn31">-</button>
+          <div class="counter-value" id="counter-value31">0</div>
+          <button class="counter-btn" id="increment-btn31">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice32</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn32">-</button>
+          <div class="counter-value" id="counter-value32">0</div>
+          <button class="counter-btn" id="increment-btn32">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice33</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn33">-</button>
+          <div class="counter-value" id="counter-value33">0</div>
+          <button class="counter-btn" id="increment-btn33">+</button>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <p>Dice34</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn34">-</button>
+          <div class="counter-value" id="counter-value34">0</div>
+          <button class="counter-btn" id="increment-btn34">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice35</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn35">-</button>
+          <div class="counter-value" id="counter-value35">0</div>
+          <button class="counter-btn" id="increment-btn35">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice36</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn36">-</button>
+          <div class="counter-value" id="counter-value36">0</div>
+          <button class="counter-btn" id="increment-btn36">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice37</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn37">-</button>
+          <div class="counter-value" id="counter-value37">0</div>
+          <button class="counter-btn" id="increment-btn37">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice38</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn38">-</button>
+          <div class="counter-value" id="counter-value38">0</div>
+          <button class="counter-btn" id="increment-btn38">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice39</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn39">-</button>
+          <div class="counter-value" id="counter-value39">0</div>
+          <button class="counter-btn" id="increment-btn39">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice40</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn40">-</button>
+          <div class="counter-value" id="counter-value40">0</div>
+          <button class="counter-btn" id="increment-btn40">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice41</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn41">-</button>
+          <div class="counter-value" id="counter-value41">0</div>
+          <button class="counter-btn" id="increment-btn41">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice42</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn42">-</button>
+          <div class="counter-value" id="counter-value42">0</div>
+          <button class="counter-btn" id="increment-btn42">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice43</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn43">-</button>
+          <div class="counter-value" id="counter-value43">0</div>
+          <button class="counter-btn" id="increment-btn43">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice44</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn44">-</button>
+          <div class="counter-value" id="counter-value44">0</div>
+          <button class="counter-btn" id="increment-btn44">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice45</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn45">-</button>
+          <div class="counter-value" id="counter-value45">0</div>
+          <button class="counter-btn" id="increment-btn45">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice46</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn46">-</button>
+          <div class="counter-value" id="counter-value46">0</div>
+          <button class="counter-btn" id="increment-btn46">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice47</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn47">-</button>
+          <div class="counter-value" id="counter-value47">0</div>
+          <button class="counter-btn" id="increment-btn47">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice48</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn48">-</button>
+          <div class="counter-value" id="counter-value48">0</div>
+          <button class="counter-btn" id="increment-btn48">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice49</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn49">-</button>
+          <div class="counter-value" id="counter-value49">0</div>
+          <button class="counter-btn" id="increment-btn49">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice50</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn50">-</button>
+          <div class="counter-value" id="counter-value50">0</div>
+          <button class="counter-btn" id="increment-btn50">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice51</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn51">-</button>
+          <div class="counter-value" id="counter-value51">0</div>
+          <button class="counter-btn" id="increment-btn51">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice52</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn52">-</button>
+          <div class="counter-value" id="counter-value52">0</div>
+          <button class="counter-btn" id="increment-btn52">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Dice53</p>
+      <img src="Assets/Testimg.png" class="dicepng">
+      <br>
+      <div class="container">
+        <div class="counter">
+          <button class="counter-btn" id="decrement-btn53">-</button>
+          <div class="counter-value" id="counter-value53">0</div>
+          <button class="counter-btn" id="increment-btn53">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </body>
 
 <script src="counter.js"></script>
